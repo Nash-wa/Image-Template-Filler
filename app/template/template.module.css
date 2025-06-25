@@ -1,0 +1,103 @@
+.sidebarSection {
+  min-width: 380px;
+  flex: 1;
+}
+
+.placeholdersBox {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(24,16,40,0.04);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.placeholdersTitle {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.placeholderDropdown {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.placeholderDropdownLabel {
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.placeholderChevron {
+  display: block;
+  transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+}
+
+.placeholderChevronOpen {
+  transform: rotate(180deg);
+}
+
+.placeholderValue {
+  color: #8b7fa0;
+  font-size: 15px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54px;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(24,16,40,0.10);
+  z-index: 10;
+}
+
+.dropdownOption {
+  padding: 10px 16px;
+  color: #181028;
+  background: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dropdownOptionSelected {
+  color: #5b159a;
+  background: #f3eafd;
+  font-weight: 700;
+}
+
+.previewAllButton {
+  width: 100%;
+  margin-top: 24px;
+  background: #5b159a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.previewSection {
+  flex: 2;
+  min-width: 400px;
+}
+
+.previewBox {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(24,16,40,0.08);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
