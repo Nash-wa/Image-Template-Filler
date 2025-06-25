@@ -1,3 +1,8 @@
+/* Add this at the top for global override if needed */
+:global(html) {
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
+}
+
 .sidebarSection {
   min-width: 380px;
   flex: 1;
@@ -75,16 +80,29 @@
 }
 
 .previewAllButton {
-  width: 100%;
-  margin-top: 24px;
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
   background: #5b159a;
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 8px;
-  padding: 14px 0;
+  border-radius: 10px;
+  padding: 16px 0;
+  width: 100%;
+  margin-top: 24px;
   cursor: pointer;
+  box-shadow: 0 2px 12px rgba(24,16,40,0.08);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+  outline: none;
+}
+.previewAllButton:hover, .previewAllButton:focus {
+  background: #3d0e6e;
+  box-shadow: 0 4px 18px rgba(24,16,40,0.13);
+  transform: translateY(-1px) scale(1.01);
+}
+.previewAllButton:active {
+  background: #2a094d;
+  transform: scale(0.98);
 }
 
 .previewSection {
@@ -100,4 +118,131 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hamburger {
+  display: none;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 120;
+}
+
+.hamburgerBar {
+  width: 24px;
+  height: 3px;
+  background: #5b159a;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.mobileNav {
+  display: none;
+}
+
+.menuOverlay {
+  display: none;
+}
+
+.show {
+  display: flex !important;
+}
+
+@media (max-width: 900px) {
+  .sidebarSection {
+    min-width: 100%;
+    flex: unset;
+    margin-bottom: 24px;
+  }
+  .previewSection {
+    min-width: 100%;
+    flex: unset;
+  }
+  .previewBox {
+    padding: 16px;
+  }
+  .placeholdersBox {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebarSection {
+    min-width: 100%;
+    margin-bottom: 16px;
+  }
+  .previewSection {
+    min-width: 100%;
+  }
+  .placeholdersTitle, .placeholderDropdownLabel {
+    font-size: 16px;
+  }
+  .previewAllButton {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+  .dropdownOption {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+  .navLinks {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    right: 16px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(24,16,40,0.10);
+    border-radius: 12px;
+    z-index: 100;
+    min-width: 140px;
+    padding: 12px 0;
+    gap: 0;
+  }
+  .mobileNav a {
+    color: #5b159a;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid #ececec;
+  }
+  .mobileNav a:last-child {
+    border-bottom: none;
+  }
+  .sidebarSection, .previewSection {
+    min-width: 100%;
+    flex: unset;
+  }
+  .sidebarSection {
+    margin-bottom: 12px;
+  }
+  .previewBox {
+    padding: 8px;
+  }
+  .placeholdersBox {
+    padding: 8px;
+  }
+  .menuOverlay {
+    display: block;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(20,15,23,0.18);
+    z-index: 110;
+  }
 } 

@@ -1,3 +1,8 @@
+/* Add this at the top for global override if needed */
+:global(html) {
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
+}
+
 .navLinks {
   margin-left: auto;
   margin-right: 40px;
@@ -78,9 +83,10 @@
 }
 
 .previewImageWrap {
-  width: 369px;
-  height: 242px;
-  background: #f8eee3;
+  width: 100%;
+  max-width: 369px;
+  height: auto;
+  min-height: 180px;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -89,6 +95,9 @@
 }
 
 .previewImage {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 16px;
 }
@@ -112,4 +121,153 @@
   color: #8b7fa0;
   font-size: 16px;
   max-width: 320px;
+}
+
+.hamburger {
+  display: none;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 120;
+}
+.hamburgerBar {
+  width: 24px;
+  height: 3px;
+  background: #5b159a;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.mobileNav {
+  display: none;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(24,16,40,0.12);
+  min-width: 160px;
+  right: 12px;
+  top: 54px;
+  padding: 16px 0;
+  gap: 0;
+}
+.mobileNav a {
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
+  padding: 14px 28px;
+  font-size: 1.1rem;
+}
+.mobileNav a:not(:last-child) {
+  border-bottom: 1px solid #ececec;
+}
+.menuOverlay {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mainContent {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 8px;
+  }
+  .csvSection, .previewSection {
+    min-width: 100%;
+    flex: unset;
+  }
+  .previewRow {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .previewImageWrap {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navLinks {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+  .menuOverlay {
+    display: block;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(20,15,23,0.18);
+    z-index: 110;
+  }
+  .mainContent {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 4px;
+  }
+  .csvSection, .previewSection {
+    min-width: 100%;
+    flex: unset;
+  }
+  .previewRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .previewImageWrap {
+    width: 100%;
+    height: auto;
+    min-height: 120px;
+    border-radius: 10px;
+  }
+  .tableWrapper {
+    border-radius: 8px;
+    padding: 0;
+  }
+  .sectionTitle {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .previewTitle {
+    font-size: 15px;
+  }
+  .previewDesc, .previewLabel {
+    font-size: 12px;
+  }
+  .tableHeader, .tableCell {
+    font-size: 12px;
+    padding: 6px 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainContent {
+    gap: 16px;
+    margin: 24px auto 0 auto;
+    padding: 0 4px;
+  }
+  .sectionTitle {
+    font-size: 20px;
+  }
+  .previewTitle {
+    font-size: 16px;
+  }
+  .previewDesc, .previewLabel {
+    font-size: 13px;
+  }
+  .previewImageWrap {
+    min-height: 120px;
+    border-radius: 10px;
+  }
+  .tableHeader, .tableCell {
+    font-size: 13px;
+    padding: 8px 8px;
+  }
+}
+
+.previewAllButton {
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
 } 

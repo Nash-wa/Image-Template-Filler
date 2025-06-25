@@ -27,7 +27,7 @@ function Chevron({ open }) {
 }
 
 export default function TemplatePage() {
-  // Static placeholder data
+  const [menuOpen, setMenuOpen] = useState(false);
   const placeholders = [
     { label: "Name", desc: "Placeholder 1", options: ["Placeholder 1", "Placeholder 2", "Placeholder 3"] },
     { label: "Title", desc: "Placeholder 2", options: ["Placeholder 1", "Placeholder 2", "Placeholder 3"] },
@@ -49,8 +49,7 @@ export default function TemplatePage() {
 
   return (
     <div className={styles.landing}>
-      {/* Navbar */}
-      <header className={styles.navbar}>
+      <header className={styles.navbar} style={{position:'relative'}}>
         <div className={styles.logoRow}>
           <img src="/logo_image.svg" alt="Logo" className={styles.logo} />
           <span className={styles.brand}>Image-Template-Filler</span>
@@ -59,11 +58,20 @@ export default function TemplatePage() {
           <a href="/" className={contentStyles.navLink}>Home</a>
           <a href="https://github.com/alvin-dennis/Image-Template-Filler" target="_blank" rel="noopener noreferrer" className={contentStyles.navLink}>Github</a>
         </nav>
+        <button className={templateStyles.hamburger} aria-label="Open menu" onClick={()=>setMenuOpen(v=>!v)}>
+          <span className={templateStyles.hamburgerBar}></span>
+          <span className={templateStyles.hamburgerBar}></span>
+          <span className={templateStyles.hamburgerBar}></span>
+        </button>
+        {menuOpen && <div className={templateStyles.menuOverlay + ' ' + templateStyles.show} onClick={()=>setMenuOpen(false)}></div>}
+        {menuOpen && (
+          <nav className={templateStyles.mobileNav + ' ' + templateStyles.show}>
+            <a href="/" onClick={()=>setMenuOpen(false)}>Home</a>
+            <a href="https://github.com/alvin-dennis/Image-Template-Filler" target="_blank" rel="noopener noreferrer" onClick={()=>setMenuOpen(false)}>Github</a>
+          </nav>
+        )}
       </header>
-
-      {/* Main Content */}
       <main className={contentStyles.mainContent} style={{ alignItems: "flex-start", marginTop: 48 }}>
-        {/* Sidebar: Map Placeholders */}
         <section className={templateStyles.sidebarSection}>
           <h2 style={{ fontSize: 36, fontWeight: 800, marginBottom: 32 }}>Map Placeholders</h2>
           <div className={templateStyles.placeholdersBox}>
@@ -80,7 +88,6 @@ export default function TemplatePage() {
                 <div className={templateStyles.placeholderValue} onClick={() => handleDropdown(idx)}>
                   {selected[idx]}
                 </div>
-                {/* Dropdown */}
                 {openDropdown === idx && (
                   <div className={templateStyles.dropdownMenu}>
                     {ph.options.map((option, oidx) => (
@@ -100,13 +107,11 @@ export default function TemplatePage() {
                 )}
               </div>
             ))}
-            <button className={templateStyles.previewAllButton}>
+            <button className={templateStyles.previewAllButton} type="button">
               Preview All
             </button>
           </div>
         </section>
-
-        {/* Template Preview */}
         <section className={templateStyles.previewSection}>
           <h2 style={{ fontSize: 36, fontWeight: 800, marginBottom: 32 }}>Template Preview</h2>
           <div className={templateStyles.previewBox}>
