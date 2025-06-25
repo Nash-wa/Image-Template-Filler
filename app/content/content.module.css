@@ -1,7 +1,4 @@
-/* Add this at the top for global override if needed */
-:global(html) {
-  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
-}
+/* Removed :global(html) for Next.js compatibility */
 
 .navLinks {
   margin-left: auto;
@@ -23,6 +20,7 @@
   margin: 48px auto 0 auto;
   align-items: flex-start;
   justify-content: center;
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
 }
 
 .csvSection {
