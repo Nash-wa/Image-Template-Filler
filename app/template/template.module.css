@@ -1,5 +1,6 @@
-/* Add this at the top for global override if needed */
-:global(html) {
+/* Removed :global(html) for Next.js compatibility */
+
+.sidebarSection, .previewSection {
   font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
 }
 
