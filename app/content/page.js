@@ -2,8 +2,10 @@
 import styles from "../Landing.module.css";
 import contentStyles from "./content.module.css";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ContentPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const csvHeaders = ["Column 1", "Column 2", "Column 3"];
   const csvRows = [
     ["Value A1", "Value B1", "Value C1"],
@@ -15,7 +17,7 @@ export default function ContentPage() {
 
   return (
     <div className={styles.landing}>
-      <header className={styles.navbar}>
+      <header className={styles.navbar} style={{position:'relative'}}>
         <div className={styles.logoRow}>
           <img src="/logo_image.svg" alt="Logo" className={styles.logo} />
           <span className={styles.brand}>Image-Template-Filler</span>
@@ -24,9 +26,19 @@ export default function ContentPage() {
           <a href="/" className={contentStyles.navLink}>Home</a>
           <a href="https://github.com/alvin-dennis/Image-Template-Filler" target="_blank" rel="noopener noreferrer" className={contentStyles.navLink}>Github</a>
         </nav>
+        <button className={contentStyles.hamburger} aria-label="Open menu" onClick={()=>setMenuOpen(v=>!v)}>
+          <span className={contentStyles.hamburgerBar}></span>
+          <span className={contentStyles.hamburgerBar}></span>
+          <span className={contentStyles.hamburgerBar}></span>
+        </button>
+        {menuOpen && <div className={contentStyles.menuOverlay} onClick={()=>setMenuOpen(false)}></div>}
+        {menuOpen && (
+          <nav className={contentStyles.mobileNav}>
+            <a href="/" onClick={()=>setMenuOpen(false)}>Home</a>
+            <a href="https://github.com/alvin-dennis/Image-Template-Filler" target="_blank" rel="noopener noreferrer" onClick={()=>setMenuOpen(false)}>Github</a>
+          </nav>
+        )}
       </header>
-
-
       <main className={contentStyles.mainContent}>
         <section className={contentStyles.csvSection}>
           <h2 className={contentStyles.sectionTitle}>Edit CSV Content</h2>
@@ -51,7 +63,6 @@ export default function ContentPage() {
             </table>
           </div>
         </section>
-
         <section className={contentStyles.previewSection}>
           <h2 className={contentStyles.sectionTitle}>Preview</h2>
           <div className={contentStyles.previewRow}>
